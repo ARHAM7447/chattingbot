@@ -259,10 +259,32 @@ body {
 }
  /* here is the footer for the website*/
  /* Footer Styles */
+/* Reset Default Margins and Padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1; /* Pushes the footer down */
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* Footer Styling */
 .footer {
     background: linear-gradient(90deg, #4CAF50, #2196F3, #FF5722);
     color: white;
-    padding: 60px 20px;
+    padding: 50px 20px;
     text-align: center;
 }
 
