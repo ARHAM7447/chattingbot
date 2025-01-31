@@ -1,13 +1,16 @@
+/* Resetting margin, padding, and setting box-sizing for all elements */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Setting body font */
 body {
     font-family: Arial, sans-serif;
 }
 
+/* Navbar Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -31,6 +34,7 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+/* Navbar Links */
 .navbar .nav-links {
     display: flex;
     gap: 20px;
@@ -49,26 +53,66 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Banner Section */
 .banner {
     text-align: center;
     padding: 50px 20px;
     background: linear-gradient(120deg, #4CAF50, #2196F3, #FF5722);
     color: #fff;
+    width: 100%; /* Ensures it stretches across the screen */
+    box-sizing: border-box;
 }
 
+/* Heading inside banner */
 .banner h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+    font-size: 3rem; /* 3rem for large screens */
+    margin-bottom: 15px;
 }
 
+/* Paragraph inside banner */
 .banner p {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Slightly larger font for readability */
 }
-.banner-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+    .banner {
+        padding: 40px 15px; /* Slightly smaller padding for tablets */
+    }
+
+    .banner h1 {
+        font-size: 2.5rem; /* Reduce the heading size for medium screens */
+    }
+
+    .banner p {
+        font-size: 1.1rem; /* Slightly smaller paragraph text */
+    }
+}
+
+@media (max-width: 768px) {
+    .banner {
+        padding: 30px 10px; /* Smaller padding for mobile screens */
+    }
+
+    .banner h1 {
+        font-size: 2rem; /* Reduce heading size further for small screens */
+    }
+
+    .banner p {
+        font-size: 1rem; /* Make paragraph text smaller for mobile screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .banner {
+        padding: 20px 10px; /* Minimized padding for very small screens */
+    }
+
+    .banner h1 {
+        font-size: 1.8rem; /* Heading further reduced for small devices */
+    }
+
+    .banner p {
+        font-size: 0.9rem; /* Smaller font for smaller screens */
+    }
 }
