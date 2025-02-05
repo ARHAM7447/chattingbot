@@ -15,7 +15,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #dd0404;
     color: #fff;
     padding: 15px 0;
     text-align: center;
@@ -69,7 +69,7 @@ header {
     max-width: 300px;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(237, 229, 5, 0.921);
     transition: all 0.3s ease-in-out;
     position: relative;
     overflow: hidden;
@@ -83,7 +83,7 @@ header {
 .tool-box h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #444;
+    color: #444444;
     text-transform: uppercase;
 }
 
@@ -130,7 +130,7 @@ header {
 
 /* Footer Styles */
 footer {
-    background-color: #333;
+    background-color: #f21111;
     color: white;
     text-align: center;
     padding: 10px 0;
