@@ -159,3 +159,55 @@ footer {
     color: #ff6347;
     transform: scale(1.1);
 }
+/* button code /*
+
+/* Button Box Container */
+.button-box {
+    display: flex; /* Aligns buttons in a row */
+    justify-content: center; /* Centers buttons horizontally */
+    gap: 10px; /* Adds space between buttons */
+    padding: 15px;
+    background-color: #f4f4f4; /* Light gray background */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Button Styling */
+.button-box button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Primary Button */
+.button-box .primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.button-box .primary:hover {
+    background-color: #0056b3;
+}
+
+/* Secondary Button */
+.button-box .secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.button-box .secondary:hover {
+    background-color: #545b62;
+}
+
+/* Success Button */
+.button-box .success {
+    background-color: #28a745;
+    color: white;
+}
+
+.button-box .success:hover {
+    background-color: #1e7e34;
+}
