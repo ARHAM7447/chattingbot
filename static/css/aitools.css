@@ -1,0 +1,180 @@
+/* Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation */
+.navbar {
+    text-align: center;
+    padding: 15px;
+    background-color: #0056b3;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.navbar ul li a:hover {
+    background-color: #ff6347;
+    color: white;
+}
+
+/* Content Section */
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 40px;
+    text-align: center;
+}
+
+/* Box Styles */
+.tool-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    max-width: 350px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.tool-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tool-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.tool-box p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Button Box */
+.button-box {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Buttons with Attractive Animations */
+.button-box button {
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.button-box button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.button-box button:active {
+    transform: scale(0.95);
+}
+
+/* Animated Button Effect */
+.button-box button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: transform 0.4s ease-in-out;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+}
+
+.button-box button:active::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+}
+
+/* Button Colors */
+.primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+}
+
+.secondary {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    color: white;
+}
+
+.success {
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: white;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+    .button-box {
+        flex-direction: column;
+        align-items: center;
+    }
+    .button-box button {
+        width: 80%;
+    }
+}
