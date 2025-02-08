@@ -13,9 +13,10 @@
         <nav class="navbar">
             <div class="logo">AI Tools</div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="feedback.html">feedback</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+                
             </ul>
         </nav>
     </header>
@@ -26,13 +27,7 @@
         <div class="tool-box" onclick="showTool('Chatbot', 'AI-powered chatbot for assistance.')">
             <h3>AI Voice assistance</h3>
             <p>AI-powered assistance</p>
-            <button class="button-box" onclick="openChatbot()">Click</button>
-
-<script>
-    function openChatbot() {
-        window.location.href = "{{ url_for('chat') }}"; // Flask-generated route
-    }
-</script>
+           
 
         </div>
         <div class="tool-box" onclick="showTool('Sentiment Analysis', 'Analyze text sentiment.')">

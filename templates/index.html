@@ -15,8 +15,9 @@
             <span>Work with AI</span>
         </div>
         <div class="nav-links">
-            <a href="feedback.html">Feedback</a>
-            <a href="about.html">About Us</a>
+            <a href="{{ url_for('feedback') }}">Feedback</a>
+            <a href="{{ url_for('about') }}">About Us</a>
+            
         </div>
     </nav>
 
@@ -62,7 +63,7 @@
 
         <!-- AI Tools Button -->
         <div class="button-container">
-            <a href="ai.html" class="ai-tools-btn">🚀 Explore AI Tools</a>
+            <a href="{{ url_for('ai') }}" class="ai-tools-btn">🚀 Explore AI Tools</a>
         </div>
     </div>
 
