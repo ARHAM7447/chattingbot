@@ -5,9 +5,12 @@
     box-sizing: border-box;
 }
 
-/* Setting body font */
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f4f4f9; /* Light background for contrast */
+    color: #333; /* Dark text for readability */
+    line-height: 1.6;
 }
 
 /* Navbar Styles */
@@ -15,72 +18,78 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, #4CAF50, #2196F3, #FF5722);
-    padding: 10px 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #1d3557; /* Deep blue */
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
 }
 
 .navbar .logo {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.navbar .logo span {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #fff;
     font-weight: bold;
-    background: linear-gradient(90deg, #FFD700, #FF4500, #1E90FF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
-/* Navbar Links */
 .navbar .nav-links {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap;
 }
 
 .navbar .nav-links a {
     text-decoration: none;
     color: #fff;
     font-size: 1rem;
-    padding: 8px 15px;
+    padding: 8px 20px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .navbar .nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #e63946; /* Red hover effect */
 }
 
 /* Banner Section */
 .banner {
     text-align: center;
-    padding: 50px 20px;
-    background: linear-gradient(120deg, #4CAF50, #2196F3, #FF5722);
+    padding: 70px 20px;
+    background-color: #e63946; /* Red background for attention */
     color: #fff;
-    width: 100%;
     box-sizing: border-box;
 }
 
-/* Heading inside banner */
 .banner h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
 }
 
-/* Paragraph inside banner */
 .banner p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 300;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
     .banner {
-        padding: 40px 15px;
+        padding: 60px 15px;
+    }
+
+    .banner h1 {
+        font-size: 3rem;
+    }
+
+    .banner p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .banner {
+        padding: 50px 10px;
     }
 
     .banner h1 {
@@ -92,49 +101,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .nav-links {
-        gap: 10px;
-    }
-
-    .banner {
-        padding: 30px 10px;
-    }
-
-    .banner h1 {
-        font-size: 2rem;
-    }
-
-    .banner p {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .banner {
-        padding: 20px 10px;
-    }
-
-    .banner h1 {
-        font-size: 1.8rem;
-    }
-
-    .banner p {
-        font-size: 0.9rem;
-    }
-}
-
-/* General Styles */
-body {
-    background-color: #f4f4f4;
-}
-
+/* AI Work Section */
 .ai-work-section {
     padding: 50px 20px;
     text-align: center;
@@ -145,7 +112,6 @@ body {
     font-size: 2.5rem;
     margin-bottom: 40px;
     color: #333;
-    animation: fadeIn 2s;
 }
 
 .ai-box-container {
@@ -156,67 +122,31 @@ body {
 }
 
 .ai-box {
-    background-color: #007BFF;
+    background-color: #4caf50; /* Green for fresh, clean look */
     color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 25px;
+    border-radius: 8px;
+    width: 280px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
     animation: moveUp 1s;
 }
 
 .ai-box:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background-color: #45a049; /* Darker green on hover */
 }
 
 .ai-box h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 15px;
+    color: #fff;
 }
 
 .ai-box p {
     font-size: 1rem;
-    line-height: 1.5;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .ai-box-container {
-        flex-direction: row;
-        justify-content: center;
-    }
-
-    .ai-box {
-        width: 280px;
-    }
-}
-
-@media (max-width: 768px) {
-    .ai-box-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .ai-box {
-        width: 80%;
-    }
-}
-
-@media (max-width: 480px) {
-    .ai-box {
-        width: 90%;
-        padding: 15px;
-    }
-
-    .ai-box h2 {
-        font-size: 1.3rem;
-    }
-
-    .ai-box p {
-        font-size: 0.9rem;
-    }
+    line-height: 1.6;
 }
 
 /* Animations */
@@ -231,58 +161,9 @@ body {
     }
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes scrollMove {
-    0% {
-        background-color: #007BFF;
-    }
-    50% {
-        background-color: #FF5733;
-        transform: translateX(10px);
-    }
-    100% {
-        background-color: #007BFF;
-        transform: translateX(0);
-    }
-}
-
-.ai-box:hover {
-    animation: scrollMove 1s infinite;
-}
- /* here is the footer for the website*/
- /* Footer Styles */
-/* Reset Default Margins and Padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-}
-
-/* Main Content */
-.main-content {
-    flex: 1; /* Pushes the footer down */
-    text-align: center;
-    padding: 50px 20px;
-}
-
-/* Footer Styling */
+/* Footer Styles */
 .footer {
-    background: linear-gradient(90deg, #4CAF50, #2196F3, #FF5722);
+    background-color: #343a40; /* Dark footer background */
     color: white;
     padding: 50px 20px;
     text-align: center;
@@ -305,14 +186,14 @@ body {
 .footer h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #fff;
     display: inline-block;
     padding-bottom: 5px;
 }
 
 .footer p,
 .footer a {
-    color: white;
+    color: #ccc;
     font-size: 1rem;
     text-decoration: none;
     display: block;
@@ -329,11 +210,11 @@ body {
     margin: 10px;
     color: white;
     font-size: 1.5rem;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .social-icons a:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 /* Copyright */
@@ -341,7 +222,7 @@ body {
     text-align: center;
     padding: 15px 0;
     margin-top: 20px;
-    border-top: 1px solid white;
+    border-top: 1px solid #444;
 }
 
 /* Responsive Footer */
@@ -359,31 +240,40 @@ body {
 /* AI Tools Button */
 .ai-tools-btn {
     display: inline-block;
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    background-color: #ff5733; /* Vibrant button color */
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
     padding: 15px 30px;
     border-radius: 50px;
     text-decoration: none;
     text-align: center;
-    transition: all 0.4s ease-in-out;
-    box-shadow: 0 5px 15px rgba(255, 75, 43, 0.3);
-    position: relative;
-    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(255, 87, 51, 0.2);
+    /* Center the button */
+    margin: 0 auto; /* Horizontally center */
+    display: block; /* Ensure block-level display for centering */
+}
+
+/* Center the button within the container */
+.ai-tools-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust this if the container has a specific height */
 }
 
 /* Button Hover Effect */
 .ai-tools-btn:hover {
-    background: linear-gradient(90deg, #ff4b2b, #ff416c);
-    box-shadow: 0 8px 20px rgba(255, 75, 43, 0.5);
+    background-color: #ff416c; /* Smooth hover effect */
+    box-shadow: 0 8px 20px rgba(255, 87, 51, 0.4);
     transform: scale(1.05);
 }
 
-/* Add Glow Effect */
+/* Button Hover Effect */
 .ai-tools-btn::after {
     content: "";
-    position: absolute;
+    position: center;
     top: 50%;
     left: 50%;
     width: 300%;

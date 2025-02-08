@@ -1,6 +1,71 @@
- /* Footer Styles */
- .footer {
-    background: linear-gradient(90deg, #4CAF50, #2196F3, #FF5722);
+/* General Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7; /* Soft, neutral background */
+    color: #333; /* Dark text for better readability */
+    text-align: center;
+}
+
+/* Header */
+header {
+    background: #003366; /* Deep blue for professionalism */
+    color: white;
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #00509E; /* Blue for a professional look */
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo span {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: bold;
+    background: linear-gradient(90deg, #FFD700, #FF4500, #1E90FF); /* Professional gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Navbar Links */
+.navbar .nav-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle hover effect */
+}
+
+/* Footer Styles */
+.footer {
+    background: #343a40; /* Dark, professional background for footer */
     color: white;
     padding: 60px 20px;
     text-align: center;
@@ -51,7 +116,7 @@
 }
 
 .social-icons a:hover {
-    transform: scale(1.2);
+    transform: scale(1.2); /* Slight zoom on hover */
 }
 
 /* Copyright */
@@ -77,7 +142,7 @@
 /* AI Tools Button */
 .ai-tools-btn {
     display: inline-block;
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    background: #0069d9; /* Soft blue for AI tools button */
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
@@ -86,70 +151,11 @@
     text-decoration: none;
     text-align: center;
     transition: all 0.4s ease-in-out;
-    box-shadow: 0 5px 15px rgba(255, 75, 43, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-/* Navbar Styles */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(90deg, #4CAF50, #2196F3, #FF5722);
-    padding: 10px 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.navbar .logo {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.navbar .logo span {
-    font-size: 1.5rem;
-    color: #fff;
-    font-weight: bold;
-    background: linear-gradient(90deg, #FFD700, #FF4500, #1E90FF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Navbar Links */
-.navbar .nav-links {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.navbar .nav-links a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1rem;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.navbar .nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* General Styling */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    text-align: center;
-}
-
-/* Header */
-header {
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
-    color: white;
-    padding: 20px;
+.ai-tools-btn:hover {
+    background: #00509e; /* Slightly darker blue on hover */
 }
 
 /* Feedback Form */
@@ -167,13 +173,13 @@ input, textarea {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 /* Submit Button */
 .submit-btn {
-    background: #ff4b2b;
+    background: #007bff; /* Matching blue for submit button */
     color: white;
     padding: 12px 20px;
     border: none;
@@ -184,7 +190,7 @@ input, textarea {
 }
 
 .submit-btn:hover {
-    background: #ff416c;
+    background: #00509e; /* Slightly darker blue on hover */
 }
 
 /* Team Section */
@@ -204,4 +210,16 @@ input, textarea {
     height: 100px;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design for Team */
+@media (max-width: 768px) {
+    .team {
+        flex-direction: column;
+    }
+
+    .team-member img {
+        width: 80px;
+        height: 80px;
+    }
 }
