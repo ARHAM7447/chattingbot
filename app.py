@@ -1,6 +1,9 @@
 from flask import Flask, render_template
+from tools.tool1.routes import tool1_bp
+app = Flask(__name__, template_folder='templates')
 
-app = Flask(__name__)
+# Register Blueprints for all AI tools
+app.register_blueprint(tool1_bp, template_folder='tools/tool1/templates')
 
 @app.route('/')
 @app.route('/index')
