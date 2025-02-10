@@ -120,7 +120,7 @@ h1 {
         responseText.innerHTML = `You said: "${userInput}"`;
 
         // Send user input to Flask server
-        fetch('/process_voice', {
+        fetch('/tool1/process_voice', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
