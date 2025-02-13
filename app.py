@@ -1,9 +1,12 @@
 from flask import Flask, render_template
-from tools.tool1.routes import tool1_bp
+from tools.tool1.routes import tool1_bp  # Import tool1 blueprint
+from tools.tool2.routes import tool2_bp  # Import tool2 blueprint
+
 app = Flask(__name__, template_folder='templates')
 
 # Register Blueprints for all AI tools
-app.register_blueprint(tool1_bp, template_folder='tools/tool1/templates')
+app.register_blueprint(tool1_bp, url_prefix='/tool1')  # Use url_prefix for clarity
+app.register_blueprint(tool2_bp, url_prefix='/tool2')  # Register tool2 properly
 
 @app.route('/')
 @app.route('/index')
@@ -15,11 +18,11 @@ def about():
     return render_template('about.html')
 
 @app.route('/feedback')
-def feedback():  # This is fine, the feedback function handles /feedback
+def feedback():
     return render_template('feedback.html')
 
 @app.route('/ai')
-def ai():  # Renamed the function to "ai" for uniqueness
+def ai():
     return render_template('ai.html')
 
 if __name__ == '__main__':

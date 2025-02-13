@@ -23,6 +23,7 @@
 
     <!-- Main Content -->
 <body>
+     <!-- this is the tool no.1-->
     <div class="content">
         <div class="tool-box" onclick="showTool('Chatbot', 'AI-powered chatbot for assistance.')">
             <h3>AI Voice Assistance</h3>
@@ -38,13 +39,23 @@
             window.location.href = "/tool1";  // Change '/tool1' to the actual route
         }
     </script>
-    
-           
-
         </div>
-        <div class="tool-box" onclick="showTool('Sentiment Analysis', 'Analyze text sentiment.')">
-            <h3>is</h3>
-            <p></p>
+     <!-- Tool no.2 -->
+        <div class="content">
+            <div class="tool-box" onclick="showTool('Chatbot', 'AI-powered chatbot for assistance.')">
+                <h3>AI Chatbot</h3>
+                <p>AI-powered Chatbot</p>
+                <button onclick="openTool()">Open Tool</button>
+            </div>
+        </div>
+        
+        <script>
+            function openTool() {
+                alert("Opening AI Chatbot...");
+                // You can replace this with a link to open the tool page
+                window.location.href = "/tool2";  // Change '/tool1' to the actual route
+            }
+        </script>
             
         </div>
         <div class="tool-box" onclick="showTool('AI Voice Assistant', 'Voice-enabled AI assistant.')">
