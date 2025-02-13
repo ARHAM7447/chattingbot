@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from tools.tool1.routes import tool1_bp  # Import tool1 blueprint
-from tools.tool2.routes import tool2_bp  # Import tool2 blueprint
+from tools.tool2.routes1 import tool2_bp  # Import tool2 blueprint
 
 app = Flask(__name__, template_folder='templates')
 

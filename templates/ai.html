@@ -23,39 +23,36 @@
 
     <!-- Main Content -->
 <body>
-     <!-- this is the tool no.1-->
-    <div class="content">
-        <div class="tool-box" onclick="showTool('Chatbot', 'AI-powered chatbot for assistance.')">
-            <h3>AI Voice Assistance</h3>
-            <p>AI-powered assistance</p>
-            <button onclick="openTool()">Open Tool</button>
-        </div>
+    <!-- Tool no.1 -->
+<div class="content">
+    <div class="tool-box" onclick="showTool('AI Voice Assistance', 'AI-powered assistance.')">
+        <h3>AI Voice Assistance</h3>
+        <p>AI-powered assistance</p>
+        <button onclick="openTool('tool1')">Open Tool</button>
     </div>
-    
-    <script>
-        function openTool() {
-            alert("Opening AI Voice Assistance...");
-            // You can replace this with a link to open the tool page
-            window.location.href = "/tool1";  // Change '/tool1' to the actual route
+</div>
+
+<!-- Tool no.2 -->
+<div class="content">
+    <div class="tool-box" onclick="showTool('AI Chatbot', 'AI-powered chatbot for assistance.')">
+        <h3>AI Chatbot</h3>
+        <p>AI-powered Chatbot</p>
+        <button onclick="openTool('tool2')">Open Tool</button>
+    </div>
+</div>
+
+<script>
+    function openTool(toolName) {
+        alert("Opening " + toolName + "...");
+        // Redirect based on the tool name
+        if (toolName === 'tool1') {
+            window.location.href = "/tool1";  // Route for Tool 1
+        } else if (toolName === 'tool2') {
+            window.location.href = "/tool2";  // Route for Tool 2
         }
-    </script>
-        </div>
-     <!-- Tool no.2 -->
-        <div class="content">
-            <div class="tool-box" onclick="showTool('Chatbot', 'AI-powered chatbot for assistance.')">
-                <h3>AI Chatbot</h3>
-                <p>AI-powered Chatbot</p>
-                <button onclick="openTool()">Open Tool</button>
-            </div>
-        </div>
-        
-        <script>
-            function openTool() {
-                alert("Opening AI Chatbot...");
-                // You can replace this with a link to open the tool page
-                window.location.href = "/tool2";  // Change '/tool1' to the actual route
-            }
-        </script>
+    }
+</script>
+
             
         </div>
         <div class="tool-box" onclick="showTool('AI Voice Assistant', 'Voice-enabled AI assistant.')">

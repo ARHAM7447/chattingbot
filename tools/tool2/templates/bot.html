@@ -255,16 +255,17 @@
     </div>
 </div>
 <script>
-    let activeChatId = 1;  // Default active chat ID is the first one
-    let currentZoom = 1;   // Default zoom level
+   let activeChatId = 1;  // Default active chat ID is the first one
+let currentZoom = 1;   // Default zoom level
 
-    function loadChats() {
-        fetch('/get_chats')
-        .then(response => response.json())
-        .then(data => {
-            const chatList = document.getElementById('chat-list');
-            chatList.innerHTML = '';  // Clear current chat list
+function loadChats() {
+    fetch('/tool2/get_chats')  // Updated URL
+    .then(response => response.json())
+    .then(data => {
+        const chatList = document.getElementById('chat-list');
+        chatList.innerHTML = '';  // Clear current chat list
 
+        if (data && data.chats) {
             data.chats.forEach(chat => {
                 const li = document.createElement('li');
                 li.textContent = chat.name;
@@ -275,54 +276,53 @@
                 }
                 chatList.appendChild(li);
             });
-        })
-        .catch(error => console.error('Error:', error));
-    }
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
 
-    function selectChat(chatId) {
-        activeChatId = chatId;
-        loadChatHistory(chatId);
-        loadChats();  // Refresh chat list to update active chat highlight
-    }
+function selectChat(chatId) {
+    activeChatId = chatId;
+    loadChatHistory(chatId);
+    loadChats();  // Refresh chat list to update active chat highlight
+}
 
-    function loadChatHistory(chatId) {
-        fetch(`/get_chat_history?chat_id=${chatId}`)
-        .then(response => response.json())
-        .then(data => {
-            const chatBox = document.getElementById('chat-box');
-            chatBox.innerHTML = '';  // Clear current chat history
+function loadChatHistory(chatId) {
+    fetch(`/tool2/get_chat_history?chat_id=${chatId}`)  // Updated URL
+    .then(response => response.json())
+    .then(data => {
+        const chatBox = document.getElementById('chat-box');
+        chatBox.innerHTML = '';  // Clear current chat history
 
+        if (data && data.messages) {
             data.messages.forEach(message => {
                 const messageElem = document.createElement('pre');
                 messageElem.textContent = message.text;
                 chatBox.appendChild(messageElem);
             });
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function createNewChat() {
+    const chatName = prompt("Enter new chat name:");
+    if (chatName) {
+        fetch('/tool2/new_chat', {  // Updated URL
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_name: chatName })
+        })
+        .then(response => response.json())
+        .then(data => {
+            loadChats();  // Refresh chat list
+            selectChat(data.chat_id);  // Switch to the new chat
         })
         .catch(error => console.error('Error:', error));
     }
+}
 
-
-
-    function createNewChat() {
-        const chatName = prompt("Enter new chat name:");
-        if (chatName) {
-            fetch('/new_chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_name: chatName })
-            })
-            .then(response => response.json())
-            .then(data => {
-                loadChats();  // Refresh chat list
-                selectChat(data.chat_id);  // Switch to the new chat
-            })
-            .catch(error => console.error('Error:', error));
-        }
-    }
-
-
-    function sendMessage(){
-
+function sendMessage() {
     const userInput = document.getElementById('user-input').value;
     if (userInput.trim() === '') return;
 
@@ -336,14 +336,13 @@
     // Show loading spinner
     document.getElementById('loading-spinner').style.display = 'block';
 
-    fetch('/generate', {
+    fetch('/tool2/generate', {  // Updated URL
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ input: userInput, chat_id: activeChatId })
     })
-
     .then(response => response.json())
     .then(data => {
         const aiMessage = document.createElement('pre');
@@ -359,81 +358,80 @@
         // Hide loading spinner in case of error
         document.getElementById('loading-spinner').style.display = 'none';
     });
+}
 
+function deleteSelectedChats() {
+    if (confirm('Are you sure you want to delete the selected chat?')) {
+        fetch('/tool2/delete_chat', {  // Updated URL
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: activeChatId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            loadChats();  // Refresh chat list
+            document.getElementById('chat-box').innerHTML = '';  // Clear chat history
+        })
+        .catch(error => console.error('Error:', error));
     }
+}
 
-    function deleteSelectedChats() {
-        if (confirm('Are you sure you want to delete the selected chat?')) {
-            fetch('/delete_chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: activeChatId })
-            })
-            .then(response => response.json())
-            .then(data => {
-                loadChats();  // Refresh chat list
-                document.getElementById('chat-box').innerHTML = '';  // Clear chat history
-            })
-            .catch(error => console.error('Error:', error));
-        }
+function openSettings() {
+    document.getElementById('settingsModal').style.display = 'block';
+}
+
+function closeSettings() {
+    document.getElementById('settingsModal').style.display = 'none';
+}
+
+function changeTheme(theme) {
+    switch (theme) {
+        case 'dark':
+            document.body.style.backgroundColor = '#34495e';
+            document.querySelector('.sidebar').style.backgroundColor = '#2c3e50';
+            document.querySelector('.sidebar').style.color = 'white';
+            document.querySelector('.chat-box').style.backgroundColor = '#2c3e50';
+            document.querySelector('.input-area input').style.backgroundColor = '#34495e';
+            document.querySelector('.input-area input').style.color = '#ecf0f1';
+            document.querySelector('.input-area button').style.backgroundColor = '#3498db';
+            break;
+        case 'light':
+            document.body.style.backgroundColor = '#ecf0f1';
+            document.querySelector('.sidebar').style.backgroundColor = '#ffffff';
+            document.querySelector('.chat-box').style.backgroundColor = '#ffffff';
+            document.querySelector('.input-area input').style.backgroundColor = '#ffffff';
+            document.querySelector('.input-area input').style.color = '#2c3e50';
+            document.querySelector('.input-area button').style.backgroundColor = '#3498db';
+            break;
+        case 'blue':
+            document.body.style.backgroundColor = '#e0f7fa';
+            document.querySelector('.sidebar').style.backgroundColor = '#0097a7';
+            document.querySelector('.chat-box').style.backgroundColor = '#b3e5fc';
+            document.querySelector('.input-area input').style.backgroundColor = '#b3e5fc';
+            document.querySelector('.input-area input').style.color = '#006064';
+            document.querySelector('.input-area button').style.backgroundColor = '#0097a7';
+            break;
+        default:
+            document.body.style.backgroundColor = '#ecf0f1';
+            document.querySelector('.sidebar').style.backgroundColor = '#2c3e50';
+            document.querySelector('.chat-box').style.backgroundColor = '#ffffff';
+            document.querySelector('.input-area input').style.backgroundColor = '#ffffff';
+            document.querySelector('.input-area input').style.color = '#2c3e50';
+            document.querySelector('.input-area button').style.backgroundColor = '#3498db';
     }
+}
 
-    function openSettings() {
-        document.getElementById('settingsModal').style.display = 'block';
-    }
+function zoomIn() {
+    currentZoom += 0.1;
+    document.body.style.transform = `scale(${currentZoom})`;
+}
 
-    function closeSettings() {
-        document.getElementById('settingsModal').style.display = 'none';
-    }
+function zoomOut() {
+    currentZoom = Math.max(0.5, currentZoom - 0.1);
+    document.body.style.transform = `scale(${currentZoom})`;
+}
 
-    function changeTheme(theme) {
-        switch (theme) {
-            case 'dark':
-                document.body.style.backgroundColor = '#34495e';
-                document.querySelector('.sidebar').style.backgroundColor = '#2c3e50';
-                document.querySelector('.sidebar').style.color = 'white';
-                document.querySelector('.chat-box').style.backgroundColor = '#2c3e50';
-                document.querySelector('.input-area input').style.backgroundColor = '#34495e';
-                document.querySelector('.input-area input').style.color = '#ecf0f1';
-                document.querySelector('.input-area button').style.backgroundColor = '#3498db';
-                break;
-            case 'light':
-                document.body.style.backgroundColor = '#ecf0f1';
-                document.querySelector('.sidebar').style.backgroundColor = '#ffffff';
-                document.querySelector('.chat-box').style.backgroundColor = '#ffffff';
-                document.querySelector('.input-area input').style.backgroundColor = '#ffffff';
-                document.querySelector('.input-area input').style.color = '#2c3e50';
-                document.querySelector('.input-area button').style.backgroundColor = '#3498db';
-                break;
-            case 'blue':
-                document.body.style.backgroundColor = '#e0f7fa';
-                document.querySelector('.sidebar').style.backgroundColor = '#0097a7';
-                document.querySelector('.chat-box').style.backgroundColor = '#b3e5fc';
-                document.querySelector('.input-area input').style.backgroundColor = '#b3e5fc';
-                document.querySelector('.input-area input').style.color = '#006064';
-                document.querySelector('.input-area button').style.backgroundColor = '#0097a7';
-                break;
-            default:
-                document.body.style.backgroundColor = '#ecf0f1';
-                document.querySelector('.sidebar').style.backgroundColor = '#2c3e50';
-                document.querySelector('.chat-box').style.backgroundColor = '#ffffff';
-                document.querySelector('.input-area input').style.backgroundColor = '#ffffff';
-                document.querySelector('.input-area input').style.color = '#2c3e50';
-                document.querySelector('.input-area button').style.backgroundColor = '#3498db';
-        }
-    }
-
-    function zoomIn() {
-        currentZoom += 0.1;
-        document.body.style.zoom = currentZoom;
-    }
-
-    function zoomOut() {
-        currentZoom = Math.max(0.5, currentZoom - 0.1);
-        document.body.style.zoom = currentZoom;
-    }
-
-    window.onload = loadChats;
+window.onload = loadChats;
 
 </script>
 </body>
