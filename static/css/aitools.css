@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f1f3f5; /* Light grey background for a corporate, clean look */
+    background-color: #f1f3f5; /* Light grey background for a clean look */
     color: #212529; /* Darker text color for better readability */
     display: flex;
     flex-direction: column;
@@ -23,6 +23,7 @@ header {
     font-size: 2rem;
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 10px 10px; /* Rounded bottom corners for a sleek look */
 }
 
 /* Navigation */
@@ -30,6 +31,7 @@ header {
     text-align: center;
     padding: 15px;
     background-color: #343a40; /* Darker navigation bar for a professional tone */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .navbar ul {
@@ -73,11 +75,36 @@ header {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
     border: 1px solid #e1e1e1; /* Subtle border for better structure */
+    position: relative; /* Ensures that tooltip position works well */
 }
 
 .tool-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Tooltip */
+.tool-box::after {
+    content: attr(data-tooltip); /* Uses data-tooltip attribute for dynamic content */
+    background-color: #212529; /* Dark background for the tooltip */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 110%; /* Positioning tooltip above the box */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 10; /* Ensures tooltip is on top */
+}
+
+.tool-box:hover::after {
+    opacity: 1; /* Tooltip appears on hover */
 }
 
 .tool-box h3 {
@@ -166,6 +193,7 @@ footer {
     padding: 20px;
     margin-top: auto;
     font-size: 1rem;
+    border-radius: 10px 10px 0 0; /* Rounded top corners for a sleek look */
 }
 
 /* Responsive Design */
