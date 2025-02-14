@@ -8,9 +8,9 @@
 </head>
 
 <style>
-    body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+   body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,55 +20,89 @@
 
 .container {
     text-align: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    animation: fadeIn 1s ease-in-out;
 }
 
 h1 {
-    font-size: 2rem;
-    color: #333;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .mic-wrapper {
     margin-top: 20px;
+    position: relative;
 }
 
 .mic-btn {
-    background-color: #008CBA;
+    background: radial-gradient(circle, #ff416c, #ff4b2b);
     color: white;
-    font-size: 1.5rem;
-    padding: 15px 30px;
+    font-size: 2rem;
+    padding: 20px;
     border-radius: 50%;
     border: none;
     cursor: pointer;
     outline: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s;
+    animation: pulse 2s infinite;
+}
+
+.mic-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 75, 43, 0.6);
 }
 
 .mic-btn:active {
-    background-color: #005f73;
+    background: #c0392b;
+    transform: scale(0.9);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 75, 43, 0.6);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(255, 75, 43, 0.8);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 75, 43, 0.6);
+    }
 }
 
 #conversation-history {
     margin-top: 20px;
     font-size: 1rem;
-    color: #444;
+    color: #222;
     max-height: 300px;
     overflow-y: auto;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .history-entry {
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .user-input {
     font-weight: bold;
-    color: #005f73;
+    color: #ff416c;
 }
 
 .ai-response {
@@ -76,6 +110,26 @@ h1 {
     color: #333;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+    }
+    .mic-btn {
+        font-size: 1.5rem;
+        padding: 15px;
+    }
+}
 </style>
 
 <body>
