@@ -23,98 +23,83 @@
 
     <!-- Main Content -->
 <body>
-    <!-- Tool no.1 -->
+   <!-- AI Tools -->
 <div class="content">
-    <div class="tool-box" onclick="showTool('AI Voice Assistance', 'AI-powered assistance.')">
+    <div class="tool-box" onclick="openTool('tool1', 'AI Voice Assistance')">
         <h3>AI Voice Assistance</h3>
         <p>AI-powered assistance</p>
-        <button onclick="openTool('tool1')">Open Tool</button>
+        <button onclick="event.stopPropagation(); openTool('tool1', 'AI Voice Assistance')">Open Tool</button>
     </div>
-</div>
 
-<!-- Tool no.2 -->
-<div class="content">
-    <div class="tool-box" onclick="showTool('AI Chatbot', 'AI-powered chatbot for assistance.')">
+
+
+    <div class="tool-box" onclick="openTool('tool2', 'AI Chatbot')">
         <h3>AI Chatbot</h3>
-        <p>AI-powered Chatbot</p>
-        <button onclick="openTool('tool2')">Open Tool</button>
+        <p>AI-powered chatbot for assistance</p>
+        <button onclick="event.stopPropagation(); openTool('tool2', 'AI Chatbot')">Open Tool</button>
+    </div>
+
+
+
+    <div class="tool-box" onclick="openTool('tool3', 'mcqs generate')">
+        <h3>MCQs Generator</h3>
+        <p>Generate the MCQs on any Topic</p>
+        <button onclick="event.stopPropagation(); openTool('tool3', 'mcqs generate')">Open Tool</button>
+    </div>
+
+
+
+    <div class="tool-box" onclick="openTool('tool4', 'COMING SOON')">
+        <h3>COMING SOON...</h3>
+        <p>...</p>
+    </div>
+
+
+
+    <div class="tool-box" onclick="openTool('tool5', 'COMING SOON')">
+        <h3>COMING SOON...</h3>
+        <p>...</p>
+    </div>
+
+
+
+
+    <div class="tool-box" onclick="openTool('tool6', 'COMING SOON')">
+        <h3>COMING SOON...</h3>
+        <p>...</p>
+    </div>
+
+
+
+
+    <div class="tool-box" onclick="openTool('tool7', 'COMING SOON')">
+        <h3>COMING SOON...</h3>
+        <p>...</p>
+    </div>
+
+
+
+
+    <div class="tool-box" onclick="openTool('tool8', 'COMING SOON')">
+        <h3>COMING SOON...</h3>
+        <p>...</p>
+    </div>
+
+
+
+    
+    <div class="tool-box" onclick="openTool('tool9', 'COMING SOON')">
+        <h3>COMING SOON...</h3>
+        <p>...</p>
     </div>
 </div>
 
 <script>
-    function openTool(toolName) {
+    function openTool(toolId, toolName) {
         alert("Opening " + toolName + "...");
-        // Redirect based on the tool name
-        if (toolName === 'tool1') {
-            window.location.href = "/tool1";  // Route for Tool 1
-        } else if (toolName === 'tool2') {
-            window.location.href = "/tool2";  // Route for Tool 2
-        }
+        window.open("/" + toolId, "_blank");
     }
 </script>
-
-            
-        </div>
-        <div class="tool-box" onclick="showTool('AI Voice Assistant', 'Voice-enabled AI assistant.')">
-            <h3>...</h3>
-            <p>...</p>
-           
-            
-        </div>
-        <div class="tool-box" onclick="showTool('Chatbot', 'AI-powered chatbot for assistance.')">
-            <h3>1</h3>
-            <p></p>
-           
-            
-        </div>
-        <div class="tool-box" onclick="showTool('Sentiment Analysis', 'Analyze text sentiment.')">
-            <h3>2</h3>
-            <p></p>
-           
-            
-        </div>
-        <div class="tool-box" onclick="showTool('AI Voice Assistant', 'Voice-enabled AI assistant.')">
-            <h3>3</h3>
-            <p></p>
-           
-        </div>
-        <div class="tool-box" onclick="showTool('Chatbot', 'AI-powered chatbot for assistance.')">
-            <h3>4</h3>
-            <p></p>
-           
-            
-        </div>
-        <div class="tool-box" onclick="showTool('Sentiment Analysis', 'Analyze text sentiment.')">
-            <h3>5</h3>
-            <p></p>
-            
-            
-        </div>
-        <div class="tool-box" onclick="showTool('AI Voice Assistant', 'Voice-enabled AI assistant.')">
-            <h3>6</h3>
-            <p></p>
-            
-        </div>
-        <div class="tool-box" onclick="showTool('Chatbot', 'AI-powered chatbot for assistance.')">
-            <h3>7</h3>
-            <p></p>
-           
-            
-        </div>
-        <div class="tool-box" onclick="showTool('Sentiment Analysis', 'Analyze text sentiment.')">
-            <h3>8</h3>
-            <p></p>
-            
-            
-        </div>
-        <div class="tool-box" onclick="showTool('AI Voice Assistant', 'Voice-enabled AI assistant.')">
-            <h3>9</h3>
-            <p></p>
-                     
-        </div>
-    </div>
-</body>
-</html>
 
     <!-- Footer -->
     <footer>
