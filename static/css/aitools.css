@@ -38,6 +38,7 @@ header {
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap; /* Allows items to wrap if screen size is small */
 }
 
 .navbar ul li a {
@@ -69,7 +70,8 @@ header {
     background-color: white;
     border-radius: 10px;
     padding: 25px;
-    width: 350px;
+    width: 100%;
+    max-width: 350px; /* Ensures consistency */
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
@@ -99,6 +101,7 @@ header {
     justify-content: center;
     gap: 15px;
     padding: 20px;
+    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
 }
 
 .button-box button {
@@ -110,6 +113,8 @@ header {
     cursor: pointer;
     text-transform: uppercase;
     transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 200px; /* Ensures buttons aren't too wide */
 }
 
 .button-box button:hover {
@@ -149,16 +154,68 @@ footer {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .content {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
 @media (max-width: 768px) {
     .content {
         flex-direction: column;
         align-items: center;
+        padding: 20px;
+    }
+    .tool-box {
+        width: 90%;
     }
     .button-box {
         flex-direction: column;
         align-items: center;
     }
     .button-box button {
-        width: 80%;
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 1.5rem;
+        padding: 15px;
+    }
+
+    .navbar {
+        padding: 10px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .navbar ul li a {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .tool-box {
+        width: 95%;
+    }
+
+    .button-box button {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    footer {
+        font-size: 0.9rem;
+        padding: 15px;
     }
 }

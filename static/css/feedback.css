@@ -3,14 +3,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f7f7f7; /* Soft, neutral background */
-    color: #333; /* Dark text for better readability */
+    background: #f7f7f7;
+    color: #333;
     text-align: center;
 }
 
 /* Header */
 header {
-    background: #003366; /* Deep blue for professionalism */
+    background: #003366;
     color: white;
     padding: 20px;
     font-size: 1.8rem;
@@ -23,8 +23,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #00509E; /* Blue for a professional look */
-    padding: 10px 20px;
+    background: #00509E;
+    padding: 15px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
 }
@@ -36,9 +36,8 @@ header {
 
 .navbar .logo span {
     font-size: 1.5rem;
-    color: #fff;
     font-weight: bold;
-    background: linear-gradient(90deg, #FFD700, #FF4500, #1E90FF); /* Professional gradient */
+    background: linear-gradient(90deg, #FFD700, #FF4500, #1E90FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -60,14 +59,32 @@ header {
 }
 
 .navbar .nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Subtle hover effect */
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 10px;
+    }
 }
 
 /* Footer Styles */
 .footer {
-    background: #343a40; /* Dark, professional background for footer */
+    background: #343a40;
     color: white;
-    padding: 60px 20px;
+    padding: 40px 20px;
     text-align: center;
 }
 
@@ -87,7 +104,7 @@ header {
 
 .footer h3 {
     font-size: 1.5rem;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border-bottom: 2px solid white;
     display: inline-block;
     padding-bottom: 5px;
@@ -106,60 +123,44 @@ header {
     text-decoration: underline;
 }
 
-/* Social Media Icons */
-.social-icons a {
-    display: inline-block;
-    margin: 10px;
-    color: white;
-    font-size: 1.5rem;
-    transition: transform 0.3s;
-}
-
-.social-icons a:hover {
-    transform: scale(1.2); /* Slight zoom on hover */
-}
-
-/* Copyright */
-.footer-bottom {
-    text-align: center;
-    padding: 15px 0;
-    margin-top: 20px;
-    border-top: 1px solid white;
-}
-
 /* Responsive Footer */
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
         text-align: center;
     }
-
-    .footer-column {
-        margin-bottom: 20px;
-    }
 }
 
 /* AI Tools Button */
 .ai-tools-btn {
     display: inline-block;
-    background: #0069d9; /* Soft blue for AI tools button */
+    background: #0069d9;
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 50px;
     text-decoration: none;
-    text-align: center;
-    transition: all 0.4s ease-in-out;
+    transition: 0.4s;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .ai-tools-btn:hover {
-    background: #00509e; /* Slightly darker blue on hover */
+    background: #00509e;
 }
 
-/* Feedback Form */
-.feedback-container, .about-container {
+/* Responsive AI Button */
+@media (max-width: 768px) {
+    .ai-tools-btn {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+        width: 90%;
+    }
+}
+
+/* Feedback & About Container */
+.feedback-container,
+.about-container {
     max-width: 600px;
     margin: 30px auto;
     padding: 20px;
@@ -169,7 +170,8 @@ header {
 }
 
 /* Form Inputs */
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -179,7 +181,7 @@ input, textarea {
 
 /* Submit Button */
 .submit-btn {
-    background: #007bff; /* Matching blue for submit button */
+    background: #007bff;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -190,7 +192,7 @@ input, textarea {
 }
 
 .submit-btn:hover {
-    background: #00509e; /* Slightly darker blue on hover */
+    background: #00509e;
 }
 
 /* Team Section */
@@ -198,11 +200,13 @@ input, textarea {
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
     margin-top: 20px;
 }
 
 .team-member {
     text-align: center;
+    width: 150px;
 }
 
 .team-member img {
@@ -212,10 +216,11 @@ input, textarea {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Design for Team */
+/* Responsive Team Section */
 @media (max-width: 768px) {
     .team {
         flex-direction: column;
+        align-items: center;
     }
 
     .team-member img {
