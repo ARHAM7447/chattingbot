@@ -6,35 +6,67 @@
     <title>Language Detection and Translation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        .form-control, .form-control:focus {
-            border-color: #007bff;
-            box-shadow: none;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
-        }
-        .result-section {
-            border-top: 1px solid #dee2e6;
-            padding-top: 20px;
-        }
-        .result-section h4 {
-            color: #343a40;
-        }
+      body {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    margin: 40px auto;
+}
+
+.form-control, .form-control:focus {
+    border: 2px solid #4a90e2;
+    border-radius: 6px;
+    box-shadow: none;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #ff7eb3;
+    border: none;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #e64a68;
+    transform: scale(1.05);
+}
+
+.result-section {
+    border-top: 2px solid #ddd;
+    padding-top: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.result-section h4 {
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        padding: 20px;
+    }
+    .btn-primary {
+        width: 100%;
+    }
+}
+
     </style>
 </head>
 <body>
