@@ -1,39 +1,39 @@
 ## MCQ 1
-Question: What unusual characteristic did the fruits of the Shakespear tree possess?
-A) They were shaped like apples.
-B) They shimmered with a golden hue.
-C) They tasted like grapes.
-D) They grew only during the winter.
+Question: What were the fruits on the Shakespear tree compared to?
+A) Apples
+B) Pears
+C) Oranges
+D) Grapes
 Correct Answer: B
 
 ## MCQ 2
-Question: What did the villagers believe about the Shakespear tree?
-A) It brought bad luck.
-B) It held magical properties.
-C) It was home to fairies.
-D) It bore poisonous fruit.
+Question: What did the villagers believe the Shakespear tree possessed?
+A) Healing properties
+B) Magical properties
+C) Poisonous properties
+D) Illusions
 Correct Answer: B
 
 ## MCQ 3
 Question: What was Emma's dream?
-A) To become a painter.
-B) To become a writer.
-C) To become a musician.
-D) To become a scientist.
+A) To become a painter
+B) To become a writer
+C) To become a musician
+D) To become a baker
 Correct Answer: B
 
 ## MCQ 4
 Question: What happened after Emma ate the Shakespear fruit?
-A) She fell asleep.
-B) She experienced a whirlwind of visions.
-C) She lost her memory.
-D) She became invisible.
+A) She fell asleep
+B) She experienced visions of her future
+C) She became ill
+D) She lost her memory
 Correct Answer: B
 
 ## MCQ 5
 Question: What effect did Emma's passion have on the villagers?
-A) They became jealous of her success.
-B) They were inspired to share their own tales.
-C) They left Eldermere.
-D) They stopped believing in the Shakespear tree.
+A) They became jealous of her success
+B) They were inspired to share their own stories
+C) They left the village
+D) They ignored her
 Correct Answer: B
