@@ -7,8 +7,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f1f3f5;
-    color: #212529;
+    background-color: #ffffff;
+    color: #333;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -16,7 +16,7 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #3c6e71, #284b52);
+    background-color: #007bff;
     color: white;
     padding: 20px;
     text-align: center;
@@ -28,31 +28,32 @@ header {
 
 /* Navigation */
 .navbar {
-    background-color: #343a40;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #0056b3;
     padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap; /* Allows items to wrap if screen size is small */
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .navbar ul li a {
     text-decoration: none;
     color: white;
-    font-size: 1.2rem;
-    transition: 0.3s;
-    padding: 10px 15px;
+    font-size: 1rem;
+    padding: 8px 16px;
     border-radius: 5px;
+    background-color: #0069d9;
+    transition: 0.3s;
 }
 
 .navbar ul li a:hover {
-    background-color: #007bff;
-    color: white;
+    background-color: #004085;
 }
 
 /* Content Section */
@@ -60,39 +61,29 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
-    padding: 40px;
+    gap: 20px;
+    padding: 30px;
     text-align: center;
+    background-color: #f8f9fa;
 }
 
 /* Tool Box Styling */
 .tool-box {
-    background-color: white;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
     border-radius: 10px;
-    padding: 25px;
+    padding: 20px;
     width: 100%;
-    max-width: 350px; /* Ensures consistency */
+    max-width: 350px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
-    border: 1px solid #e1e1e1;
-    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #333;
 }
 
 .tool-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.tool-box h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #343a40;
-}
-
-.tool-box p {
-    color: #6c757d;
-    font-size: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Button Section */
@@ -101,45 +92,29 @@ header {
     justify-content: center;
     gap: 15px;
     padding: 20px;
-    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+    flex-wrap: wrap;
 }
 
+/* Buttons */
 .button-box button {
-    padding: 14px 30px;
+    padding: 12px 25px;
     font-size: 16px;
     font-weight: bold;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
     text-transform: uppercase;
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 100%;
-    max-width: 200px; /* Ensures buttons aren't too wide */
+    background-color: #28a745;
+    color: white;
+    transition: all 0.3s ease-in-out;
 }
 
 .button-box button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: #218838;
 }
 
 .button-box button:active {
     transform: scale(0.95);
-}
-
-/* Button Colors */
-.primary {
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: white;
-}
-
-.secondary {
-    background: #6c757d;
-    color: white;
-}
-
-.success {
-    background: #28a745;
-    color: white;
 }
 
 /* Footer */
@@ -147,75 +122,8 @@ footer {
     background-color: #343a40;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
     margin-top: auto;
     font-size: 1rem;
     border-radius: 10px 10px 0 0;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .content {
-        flex-direction: row;
-        justify-content: space-around;
-    }
-}
-
-@media (max-width: 768px) {
-    .content {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
-    .tool-box {
-        width: 90%;
-    }
-    .button-box {
-        flex-direction: column;
-        align-items: center;
-    }
-    .button-box button {
-        width: 100%;
-        max-width: 300px;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        font-size: 1.5rem;
-        padding: 15px;
-    }
-
-    .navbar {
-        padding: 10px;
-    }
-
-    .navbar ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .navbar ul li a {
-        font-size: 1rem;
-        padding: 8px 12px;
-    }
-
-    .content {
-        padding: 15px;
-    }
-
-    .tool-box {
-        width: 95%;
-    }
-
-    .button-box button {
-        width: 100%;
-        max-width: 250px;
-    }
-
-    footer {
-        font-size: 0.9rem;
-        padding: 15px;
-    }
 }
