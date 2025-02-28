@@ -18,7 +18,7 @@ if not API_KEY:
 genai.configure(api_key=API_KEY)
 
 # Initialize AI model
-model = genai.GenerativeModel("models/gemini-pro")
+model = genai.GenerativeModel("models/gemini-1.5-flash")
 
 # Blueprint for Tool2
 tool2_bp = Blueprint("tool2", __name__, url_prefix="/tool2", template_folder="templates")
