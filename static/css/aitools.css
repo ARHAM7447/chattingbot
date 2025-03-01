@@ -3,11 +3,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
+    background: linear-gradient(120deg, #f8f9fa, #dce1e6);
     color: #333;
     display: flex;
     flex-direction: column;
@@ -16,44 +17,55 @@ body {
 
 /* Header */
 header {
-    background-color: #007bff;
+    background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
     padding: 20px;
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 15px 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-in-out;
 }
 
-/* Navigation */
+/* Navigation Bar */
 .navbar {
-    background-color: #0056b3;
+    background: #0056b3;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    animation: fadeInUp 1s ease-in-out;
 }
 
 .navbar ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
     flex-wrap: wrap;
+}
+
+.navbar ul li {
+    display: inline;
 }
 
 .navbar ul li a {
     text-decoration: none;
     color: white;
-    font-size: 1rem;
-    padding: 8px 16px;
-    border-radius: 5px;
-    background-color: #0069d9;
-    transition: 0.3s;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: linear-gradient(120deg, #0069d9, #004085);
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .navbar ul li a:hover {
-    background-color: #004085;
+    background: linear-gradient(120deg, #004085, #002752);
+    transform: scale(1.1);
 }
 
 /* Content Section */
@@ -61,56 +73,78 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    padding: 30px;
+    gap: 30px;
+    padding: 40px;
     text-align: center;
-    background-color: #f8f9fa;
+    background-color: #eef2f6;
+    animation: fadeIn 1.2s ease-in-out;
 }
 
 /* Tool Box Styling */
 .tool-box {
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
+    background: linear-gradient(135deg, #ffffff, #e9ecef);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 25px;
     width: 100%;
     max-width: 350px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+.tool-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-20deg);
+    transition: 0.5s;
+}
+
+.tool-box:hover::before {
+    left: 100%;
 }
 
 .tool-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Button Section */
 .button-box {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    padding: 20px;
+    gap: 20px;
+    padding: 25px;
     flex-wrap: wrap;
 }
 
 /* Buttons */
 .button-box button {
-    padding: 12px 25px;
+    padding: 14px 30px;
     font-size: 16px;
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
     text-transform: uppercase;
-    background-color: #28a745;
+    background: linear-gradient(120deg, #28a745, #218838);
     color: white;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .button-box button:hover {
-    background-color: #218838;
+    background: linear-gradient(120deg, #218838, #166534);
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .button-box button:active {
@@ -119,11 +153,59 @@ header {
 
 /* Footer */
 footer {
-    background-color: #343a40;
+    background: linear-gradient(135deg, #343a40, #212529);
     color: white;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
     margin-top: auto;
     font-size: 1rem;
-    border-radius: 10px 10px 0 0;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 60px;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+    transform: translateX(-50%);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

@@ -24,6 +24,80 @@
     <!-- Main Content -->
 <body>
    <!-- AI Tools -->
+
+   <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 40px;
+        max-width: 1200px;
+    }
+
+    .tool-box {
+        background: linear-gradient(135deg, #ffffff, #e9ecef);
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .tool-box:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .tool-box h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+
+    .tool-box p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .tool-box button {
+        padding: 12px 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        background: linear-gradient(120deg, #28a745, #218838);
+        color: white;
+        transition: all 0.4s ease-in-out;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .tool-box button:hover {
+        background: linear-gradient(120deg, #218838, #166534);
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .coming-soon {
+        background: linear-gradient(135deg, #f8f9fa, #d3d3d3);
+        color: #777;
+        pointer-events: none;
+    }
+</style>
+</head>
+<body>
 <div class="content">
     <div class="tool-box" onclick="openTool('tool1', 'AI Voice Assistance')">
         <h3>AI Voice Assistance</h3>
@@ -31,71 +105,55 @@
         <button onclick="event.stopPropagation(); openTool('tool1', 'AI Voice Assistance')">Open Tool</button>
     </div>
 
-
-
     <div class="tool-box" onclick="openTool('tool2', 'AI Chatbot')">
         <h3>AI Chatbot</h3>
         <p>AI-powered chatbot for assistance</p>
         <button onclick="event.stopPropagation(); openTool('tool2', 'AI Chatbot')">Open Tool</button>
     </div>
 
-
-
-    <div class="tool-box" onclick="openTool('tool3', 'mcqs generate')">
+    <div class="tool-box" onclick="openTool('tool3', 'MCQs Generator')">
         <h3>MCQs Generator</h3>
-        <p>Generate the MCQs on any Topic</p>
-        <button onclick="event.stopPropagation(); openTool('tool3', 'mcqs generate')">Open Tool</button>
+        <p>Generate the MCQs on any topic</p>
+        <button onclick="event.stopPropagation(); openTool('tool3', 'MCQs Generator')">Open Tool</button>
     </div>
-
-
 
     <div class="tool-box" onclick="openTool('tool4', 'Language Detection and Translation')">
         <h3>Language Detection and Translation</h3>
-        <p>Translate the any languages</p>
+        <p>Translate any language</p>
         <button onclick="event.stopPropagation(); openTool('tool4', 'Language Detection and Translation')">Open Tool</button>
     </div>
 
-
-
-
-    <div class="tool-box" onclick="openTool('tool5', 'Resume Builder')">
+    <div class="tool-box" onclick="openTool('tool5', 'Resume Extractor')">
         <h3>Resume Extractor</h3>
-        <p>Extract the details of Resume</p>
-        <button onclick="event.stopPropagation(); openTool('tool5', 'Resume Builder')">Open Tool</button>
+        <p>Extract details from a resume</p>
+        <button onclick="event.stopPropagation(); openTool('tool5', 'Resume Extractor')">Open Tool</button>
     </div>
-
-
-
 
     <div class="tool-box" onclick="openTool('tool6', 'Entity Recognition')">
         <h3>Entity Recognition</h3>
-        <p>Recognize the Document entity</p>
+        <p>Recognize document entities</p>
         <button onclick="event.stopPropagation(); openTool('tool6', 'Entity Recognition')">Open Tool</button>
     </div>
 
-
-
-
-    <div class="tool-box" onclick="openTool('tool8', 'COMING SOON')">
+    <div class="tool-box coming-soon">
         <h3>COMING SOON...</h3>
         <p>...</p>
     </div>
 
-
-
-    
-    <div class="tool-box" onclick="openTool('tool9', 'COMING SOON')">
+    <div class="tool-box coming-soon">
         <h3>COMING SOON...</h3>
         <p>...</p>
     </div>
 </div>
 
-<script>
+
+   <script>
     function openTool(toolId, toolName) {
         alert("Opening " + toolName + "...");
         window.open("/" + toolId, "_blank");
     }
 </script>
+
 
     <!-- Footer -->
     <footer>
