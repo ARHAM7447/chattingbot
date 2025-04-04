@@ -44,5 +44,33 @@ def feedback():
 def ai():
     return render_template('ai.html')
 
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        
+        # TODO: Add user registration logic (e.g., save to database)
+        print(f"User signed up: {username}, {email}")
+
+        return redirect(url_for('login'))  # Redirect to login page after signup
+    
+    return render_template('signup.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        
+        # TODO: Add authentication logic (e.g., check credentials from database)
+        print(f"User login attempt: {email}")
+
+        return redirect(url_for('index'))  # Redirect to homepage after login
+
+    return render_template('login.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
