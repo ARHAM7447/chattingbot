@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Threat Detector</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -19,7 +20,6 @@
             height: 100vh;
         }
 
-        /* Navbar */
         .navbar {
             width: 100%;
             background: #161b22;
@@ -87,7 +87,6 @@
             font-size: 20px;
         }
 
-        /* Spinner */
         .spinner {
             display: none;
             margin: 10px auto;
@@ -104,7 +103,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Result Styling */
         .result-box {
             margin-top: 20px;
             padding: 15px;
@@ -122,9 +120,6 @@
     <script>
         function showSpinner(formId, spinnerId) {
             document.getElementById(spinnerId).style.display = 'block';
-            setTimeout(() => {
-                document.getElementById(spinnerId).style.display = 'none';
-            }, 3000);  // Simulating loading time
         }
     </script>
 </head>
@@ -136,7 +131,7 @@
 
     <div class="container">
         <h2><i class="fas fa-exclamation-triangle"></i> Malicious Files</h2>
-        <form action="/scam/" method="post" enctype="multipart/form-data" onsubmit="showSpinner('fileForm', 'fileSpinner')">
+        <form id="fileForm" action="/tool7/scam/" method="post" enctype="multipart/form-data" onsubmit="showSpinner('fileForm', 'fileSpinner')">
             <label for="file"><strong>Upload a file (PDF/TXT only):</strong></label><br>
             <input type="file" name="file" required><br>
             <button type="submit"><i class="fas fa-upload scan-icon"></i> Analyze</button>
@@ -149,7 +144,7 @@
         {% endif %}
 
         <h2><i class="fas fa-link"></i> URL Threat Detection</h2>
-        <form method="post" action="/predict" onsubmit="showSpinner('urlForm', 'urlSpinner')">
+        <form id="urlForm" method="post" action="/tool7/predict" onsubmit="showSpinner('urlForm', 'urlSpinner')">
             <label for="url">Enter URL:</label>
             <input type="text" name="url" required>
             <button type="submit"><i class="fas fa-search"></i> Classify</button>

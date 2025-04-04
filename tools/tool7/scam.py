@@ -1,109 +1,95 @@
-from flask import Flask, render_template, request
+from flask import Blueprint, render_template, request
 import google.generativeai as genai
 import os
 import PyPDF2
+from dotenv import load_dotenv  
 
-# Initialize Flask app
-app = Flask(__name__)
+# Load environment variables
+load_dotenv()
 
-# Set up the Google API Key
-os.environ["GOOGLE_API_KEY"] = "you api key here"
-genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+tool7_bp = Blueprint("tool7", __name__, template_folder="templates")
 
-# Initialize the Gemini model
+# Get Google API Key securely
+api_key = os.getenv("GOOGLE_API_KEY")
+if not api_key:
+    raise ValueError("Google API Key is missing. Please set it in the .env file.")
+
+# Configure Google AI model
+genai.configure(api_key=api_key)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-# functions
+# Function to classify email content
 def predict_fake_or_real_email_content(text):
     prompt = f"""
-    You are an expert in identifying scam messages in text, email etc. Analyze the given text and classify it as:
+    You are an expert in identifying scam messages. Analyze the given text and classify it as:
 
-    - **Real/Legitimate** (Authentic, safe message)
-    - **Scam/Fake** (Phishing, fraud, or suspicious message)
+    - **Real/Legitimate**
+    - **Scam/Fake**
 
-    **for the following Text:**
+    Text:
     {text}
 
-    **Return a clear message indicating whether this content is real or a scam. 
-    If it is a scam, mention why it seems fraudulent. If it is real, state that it is legitimate.**
-
-    **Only return the classification message and nothing else.**
-    Note: Don't return empty or null, you only need to return message for the input text
+    Return only the classification and a brief reason.
     """
+    try:
+        response = model.generate_content(prompt)
+        return response.text.strip() if response else "Classification failed."
+    except Exception as e:
+        return f"Error: {str(e)}"
 
-    response = model.generate_content(prompt)
-    return response.text.strip() if response else "Classification failed."
-
-
+# Function to classify URLs
 def url_detection(url):
     prompt = f"""
-    You are an advanced AI model specializing in URL security classification. Analyze the given URL and classify it as one of the following categories:
+    Classify the following URL:
+    - **Benign** (Safe)
+    - **Phishing** (Fraud)
+    - **Malware** (Malicious)
+    - **Defacement** (Hacked)
 
-    1. Benign**: Safe, trusted, and non-malicious websites such as google.com, wikipedia.org, amazon.com.
-    2. Phishing**: Fraudulent websites designed to steal personal information. Indicators include misspelled domains (e.g., paypa1.com instead of paypal.com), unusual subdomains, and misleading content.
-    3. Malware**: URLs that distribute viruses, ransomware, or malicious software. Often includes automatic downloads or redirects to infected pages.
-    4. Defacement**: Hacked or defaced websites that display unauthorized content, usually altered by attackers.
-
-    **Example URLs and Classifications:**
-    - **Benign**: "https://www.microsoft.com/"
-    - **Phishing**: "http://secure-login.paypa1.com/"
-    - **Malware**: "http://free-download-software.xyz/"
-    - **Defacement**: "http://hacked-website.com/"
-
-    **Input URL:** {url}
-
-    **Output Format:**  
-    - Return only a string class name
-    - Example output for a phishing site:  
-
-    Analyze the URL and return the correct classification (Only name in lowercase such as benign etc.
-    Note: Don't return empty or null, at any cost return the corrected class
+    URL: {url}
     """
+    try:
+        response = model.generate_content(prompt)
+        return response.text.strip().lower() if response else "Detection failed."
+    except Exception as e:
+        return f"Error: {str(e)}"
 
-    response = model.generate_content(prompt)
-    return response.text if response else "Detection failed."
-
-
-# Routes
-
-@app.route('/')
+# Flask Routes
+@tool7_bp.route('/')
 def home():
-    return render_template("index.html")
+    return render_template("tool7.html")
 
-
-@app.route('/scam/', methods=['POST'])
+@tool7_bp.route('/scam/', methods=['POST'])
 def detect_scam():
     if 'file' not in request.files:
-        return render_template("index.html", message="No file uploaded.")
+        return render_template("tool7.html", message="No file uploaded.")
 
     file = request.files['file']
     extracted_text = ""
 
-    if file.filename.endswith('.pdf'):
-        pdf_reader = PyPDF2.PdfReader(file)
-        extracted_text = " ".join([page.extract_text() for page in pdf_reader.pages if page.extract_text()])
-    elif file.filename.endswith('.txt'):
-        extracted_text = file.read().decode("utf-8")
-    else:
-        return render_template("index.html", message="Invalid file type. Please upload a PDF or TXT file.")
+    try:
+        if file.filename.endswith('.pdf'):
+            pdf_reader = PyPDF2.PdfReader(file)
+            extracted_text = " ".join([page.extract_text() or '' for page in pdf_reader.pages])
+        elif file.filename.endswith('.txt'):
+            extracted_text = file.read().decode("utf-8")
+        else:
+            return render_template("tool7.html", message="Invalid file type. Please upload a PDF or TXT file.")
 
-    if not extracted_text.strip():
-        return render_template("index.html", message="File is empty or text could not be extracted.")
+        if not extracted_text.strip():
+            return render_template("tool7.html", message="File is empty or text could not be extracted.")
 
-    message = predict_fake_or_real_email_content(extracted_text)
-    return render_template("index.html", message=message)
+        message = predict_fake_or_real_email_content(extracted_text)
+        return render_template("tool7.html", message=message)
+    except Exception as e:
+        return render_template("tool7.html", message=f"Error processing file: {str(e)}")
 
-
-@app.route('/predict', methods=['POST'])
+@tool7_bp.route('/predict', methods=['POST'])
 def predict_url():
     url = request.form.get('url', '').strip()
 
     if not url.startswith(("http://", "https://")):
-        return render_template("index.html", message="Invalid URL format.", input_url=url)
+        return render_template("tool7.html", message="Invalid URL format.", input_url=url)
 
     classification = url_detection(url)
-    return render_template("index.html", input_url=url, predicted_class=classification)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    return render_template("tool7.html", input_url=url, predicted_class=classification)

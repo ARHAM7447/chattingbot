@@ -5,6 +5,7 @@ from tools.tool3.routsee import tool3_bp  # Ensure correct file name
 from tools.tool4.routing import tool4_bp  # Import tool4 blueprint
 from tools.tool5.image import tool5_bp  # Import tool5 blueprint
 from tools.tool6.tool import tool6_bp  # Ensure correct module name
+from tools.tool7.scam import tool7_bp  
 import os
 
 app = Flask(__name__, template_folder='templates')
@@ -16,6 +17,7 @@ app.register_blueprint(tool3_bp, url_prefix='/tool3')
 app.register_blueprint(tool4_bp, url_prefix='/tool4')
 app.register_blueprint(tool5_bp, url_prefix='/tool5')
 app.register_blueprint(tool6_bp, url_prefix='/tool6')  # ✅ Fixed this line
+app.register_blueprint(tool7_bp, url_prefix='/tool7')
 
 # Define routes for rendering templates
 @app.route('/')
