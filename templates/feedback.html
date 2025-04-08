@@ -3,33 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Nexus</title>
+    <title>Feedback - AI Nexus</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/feedback.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
+
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
             <span>AI Nexus</span>
         </div>
         <div class="nav-links">
             <a href="{{ url_for('about') }}">About Us</a>
-            <a href="{{ url_for('signup') }}">signup</a>
-            <a href="{{ url_for('login') }}">Login</a> 
+            <a href="{{ url_for('signup') }}">Signup</a>
+            <a href="{{ url_for('login') }}">Login</a>
             <a href="{{ url_for('index') }}">Home</a>          
         </div>
     </nav>
-<section>
-    <title>Feedback - AI Project</title>
-</head>
-<body>
 
+    <!-- Header -->
     <header>
         <h1>📝 Your Feedback Matters!</h1>
         <p>We value your thoughts and suggestions. Let us know how we can improve.</p>
     </header>
 
+    <!-- Feedback Form -->
     <section class="feedback-container">
-        <form action="submit_feedback.php" method="POST">
+        <form action="/feedback" method="POST">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -42,56 +43,52 @@
             <button type="submit" class="submit-btn">Submit Feedback 🚀</button>
         </form>
     </section>
-</section>
 
- <!-- Footer Section -->
-<!-- Footer Section -->
-<footer class="footer">
-    <div class="footer-container">
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
 
-        <!-- About Section -->
-        <div class="footer-column">
-            <h3>About Us</h3>
-            <p>We are a passionate team dedicated to delivering AI-powered solutions and web development projects.</p>
-        </div>
+            <!-- About Section -->
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>We are a passionate team dedicated to delivering AI-powered solutions and web development projects.</p>
+            </div>
 
-        <!-- Quick Links -->
-        <div class="footer-column">
-            <h3>Quick Links</h3>
-            <a href="#">Home</a>
-            <a href="#">Services</a>
-            <a href="#">Projects</a>
-            <a href="#">Contact</a>
-            <a href="#">Privacy Policy</a>
-        </div>
+            <!-- Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="#">Services</a>
+                <a href="#">Projects</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
 
-        <!-- Contact Info -->
-        <div class="footer-column">
-            <h3>Contact Us</h3>
-            <p>Email: support@example.com</p>
-            <p>Phone: +91 98765 43210</p>
-            <p>Address: 123 AI Street, Tech City, India</p>
-        </div>
+            <!-- Contact Info -->
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>Email: support@example.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Address: 123 AI Street, Tech City, India</p>
+            </div>
 
-        <!-- Social Media -->
-        <div class="footer-column">
-            <h3>Follow Us</h3>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+            <!-- Social Media -->
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
         </div>
 
-    </div>
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 YourWebsite. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-    <!-- Footer Bottom -->
-    <div class="footer-bottom">
-        <p>&copy; 2025 YourWebsite. All Rights Reserved.</p>
-    </div>
-</footer>
-
-    </section>
 </body>
 </html>
