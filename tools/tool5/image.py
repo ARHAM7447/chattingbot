@@ -1,22 +1,27 @@
-from flask import Blueprint, render_template, request, jsonify
-from PyPDF2 import PdfReader
-import google.generativeai as genai
-import os
-import json
-import re
+# Import required libraries
+from flask import Blueprint, render_template, request, jsonify  # Flask utilities
+from PyPDF2 import PdfReader  # For reading and extracting text from PDF files
+import google.generativeai as genai  # Google Gemini for AI content generation
+import os  # For environment variable handling
+import json  # To handle JSON parsing
+import re  # For regular expressions to extract JSON from text
 
-# Set your API key
+# Set your API key as an environment variable (for Gemini AI)
 os.environ["GOOGLE_API_KEY"] = "AIzaSyCS_vlMLsisM9_VbzflZzkzgBEbqc4tzyg"
-genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+genai.configure(api_key=os.environ["GOOGLE_API_KEY"])  # Configure the Gemini API
 
-# Load model
+# Load the generative model from Gemini (Gemini 1.5 Pro version)
 model = genai.GenerativeModel("models/gemini-1.5-pro")
 
-# Create Blueprint for Tool5
+# Create a Flask Blueprint for Tool5
+# - `tool5_bp` is the name of the blueprint
+# - URL prefix means all routes start with /tool5
+# - Template folder is "templates" where HTML files are located
 tool5_bp = Blueprint("tool5_bp", __name__, url_prefix="/tool5", template_folder="templates")
 
+# Function to extract structured data from resume text using Gemini
 def resumes_details(resume):
-    # Prompt with detailed request
+    # Define the AI prompt for Gemini to parse the resume text
     prompt = f"""
     You are a resume parsing assistant. Given the following resume text, extract all the important details and return them in a valid JSON format.
 
@@ -44,50 +49,58 @@ def resumes_details(resume):
     Return only the JSON object with no additional text.
     """
 
-    # Generate response from the model
+    # Ask Gemini to generate a response based on the prompt
     response = model.generate_content(prompt).text
-    
-    # Extract valid JSON using regex
+
+    # Use regex to extract just the JSON from the generated text
     json_match = re.search(r"\{.*\}", response, re.DOTALL)
     if json_match:
-        response_clean = json_match.group(0)
+        response_clean = json_match.group(0)  # Extract clean JSON
     else:
+        # If JSON is not found in the response, return an error
         return jsonify({"error": "Invalid JSON response from AI."})
     
-    return response_clean
+    return response_clean  # Return cleaned JSON string
 
+# Route for the index page of Tool5
 @tool5_bp.route('/')
 def index():
-    return render_template('image.html')
+    return render_template('image.html')  # Load the HTML template for UI
 
+# Route to handle resume upload and parsing
 @tool5_bp.route('/upload_resume', methods=['POST'])
 def upload_resume():
+    # Check if 'resume' file field exists in the form data
     if 'resume' not in request.files:
         return jsonify({"error": "No file part"})
 
-    file = request.files['resume']
+    file = request.files['resume']  # Get the uploaded file
+
+    # Check if filename is empty (no file selected)
     if file.filename == '':
         return jsonify({"error": "No selected file"})
 
+    # Proceed only if it's a valid PDF file
     if file and file.filename.endswith('.pdf'):
-        # Extract text from the PDF
-        text = ""
+        text = ""  # Initialize variable to store extracted text
+
+        # Use PyPDF2 to read the uploaded PDF
         reader = PdfReader(file)
         for page in reader.pages:
-            text += page.extract_text() or ""
+            text += page.extract_text() or ""  # Extract text from each page
 
-        # Get resume details from the model
+        # Send extracted text to Gemini to get structured resume details
         response = resumes_details(text)
-        print("Raw Model Response:\n", response)
+        print("Raw Model Response:\n", response)  # Debug: show raw JSON text
 
-        # Load the cleaned response into a dictionary
         try:
-            data = json.loads(response)
+            data = json.loads(response)  # Parse JSON string to Python dictionary
         except json.JSONDecodeError as e:
+            # If JSON decoding fails, return an error response
             print("Error decoding JSON:", e)
             return jsonify({"error": "Failed to parse resume details. Ensure resume format is readable."})
 
-        # Extract details from the JSON response
+        # Create a dictionary of extracted data with fallbacks if missing
         extracted_data = {
             "full_name": data.get("Full Name", "No Data"),
             "contact_number": data.get("Contact Number", "No Data"),
@@ -109,11 +122,12 @@ def upload_resume():
             "recommended_job_roles": ", ".join(data.get("Recommended Job Roles", [])) or "No Data"
         }
 
-        # Debugging statements
+        # Debug print of final extracted resume data
         print("Extracted Resume Data:")
         print(json.dumps(extracted_data, indent=4))
 
-        # Render the template and pass extracted values
+        # Render the HTML template with extracted resume data
         return render_template('image.html', **extracted_data)
 
+    # If the uploaded file is not a PDF
     return jsonify({"error": "Invalid file format. Please upload a PDF."})

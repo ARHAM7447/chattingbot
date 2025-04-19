@@ -1,39 +1,7 @@
-## MCQ 1
-Question: What was unusual about the pears on the Shakespear tree?
-A) They were poisonous.
+## MCQ
+Question: What unusual characteristic did the fruits of the Shakespear tree possess?
+A) They were shaped like apples.
 B) They shimmered with a golden hue.
-C) They tasted like apples.
-D) They grew upside down.
-Correct Answer: B
-
-## MCQ 2
-Question: What did the villagers believe about the Shakespear tree?
-A) It brought bad luck.
-B) It held magical properties.
-C) It was cursed.
-D) It attracted dangerous animals.
-Correct Answer: B
-
-## MCQ 3
-Question: What happened after Emma ate a Shakespear pear?
-A) She fell asleep.
-B) She experienced a whirlwind of visions.
-C) She became ill.
-D) She forgot her dreams.
-Correct Answer: B
-
-## MCQ 4
-Question: How did the villagers react to Emma's passion for writing?
-A) They discouraged her.
-B) They were indifferent.
-C) They began sharing their own tales.
-D) They left the village.
-Correct Answer: C
-
-## MCQ 5
-Question: What became of Eldermere after Emma published her book?
-A) It became a ghost town.
-B) It became a hub of storytelling.
-C) It became famous for its pear orchards.
-D) It became a popular tourist destination for its unique architecture.
+C) They tasted like regular pears.
+D) They grew only during the summer.
 Correct Answer: B
