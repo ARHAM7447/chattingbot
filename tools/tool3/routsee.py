@@ -15,7 +15,7 @@ load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 # Load the Gemini model (version 1.5 Pro)
-model = genai.GenerativeModel("models/gemini-1.5-pro")
+model = genai.GenerativeModel("models/gemini-1.5-flash")
 
 # Create a Blueprint for tool3 with a specific URL and template folder
 tool3_bp = Blueprint("tool3", __name__, url_prefix="/tool3", template_folder="templates")

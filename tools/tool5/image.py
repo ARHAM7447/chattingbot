@@ -7,11 +7,11 @@ import json  # To handle JSON parsing
 import re  # For regular expressions to extract JSON from text
 
 # Set your API key as an environment variable (for Gemini AI)
-os.environ["GOOGLE_API_KEY"] = "AIzaSyCS_vlMLsisM9_VbzflZzkzgBEbqc4tzyg"
+os.environ["GOOGLE_API_KEY"] = "AIzaSyBNWke0hyC10K4xRfmYGxSYonIOaAuxpfY"
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])  # Configure the Gemini API
 
 # Load the generative model from Gemini (Gemini 1.5 Pro version)
-model = genai.GenerativeModel("models/gemini-1.5-pro")
+model = genai.GenerativeModel("models/gemini-1.5-flash")
 
 # Create a Flask Blueprint for Tool5
 # - `tool5_bp` is the name of the blueprint

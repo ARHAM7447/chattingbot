@@ -21,7 +21,7 @@ if not api_key:
 genai.configure(api_key=api_key)
 
 # Initialize the generative model (Gemini 1.5 Flash)
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("models/gemini-1.5-flash")
 
 # Function to classify text as real or scam email
 def predict_fake_or_real_email_content(text):

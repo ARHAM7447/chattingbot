@@ -33,7 +33,7 @@ if not api_key:
 genai.configure(api_key=api_key)
 
 # Initialize the AI model (using the Gemini 1.5 Pro model)
-model = genai.GenerativeModel("gemini-1.5-pro")  # Fixed model name
+model = genai.GenerativeModel("models/gemini-1.5-flash")  # Fixed model name
 
 # Define a global variable to store the conversation history between the user and the AI
 conversation_history = []
